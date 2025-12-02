@@ -1,5 +1,4 @@
 import unittest
-from modulefinder import test
 
 from day1 import Dial
 
