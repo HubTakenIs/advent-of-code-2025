@@ -1,6 +1,13 @@
 import unittest
 
-from day2 import identify_invalid_id, loop_over_range, part_1
+from day2 import (
+    identify_invalid_id,
+    is_invalid,
+    loop_over_range,
+    loop_over_range_new_rules,
+    part_1,
+    part_2
+)
 
 
 class Day2Tests(unittest.TestCase):
@@ -36,6 +43,21 @@ class Day2Tests(unittest.TestCase):
         count, total = part_1(test_data.split(","))
         self.assertEqual(1227775554, total)
 
+    def test_new_rules_invalidator(self):
+        test_range = "11"
+        out = is_invalid(test_range)
+        self.assertEqual(True, out)
+
+
+    def test_new_rules_range_1(self):
+        test_range = "11-22"
+        count, total = loop_over_range_new_rules(test_range)
+        self.assertEqual(2, count)
+
+    def test_part2_provided_example(self):
+        test_data = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124"
+        count, total = part_2(test_data.split(","))
+        self.assertEqual(4174379265, total)
 
 if __name__ == "__main__":
     unittest.main()
